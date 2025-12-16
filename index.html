@@ -171,19 +171,22 @@
     }
 
     .viewer{
-      margin-top: 14px;
-      border-radius: 16px;
-      overflow:hidden;
-      border: 1px solid var(--border);
-      background: rgba(0,0,0,0.20);
-    }
+  margin-top: 8px;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: rgba(0,0,0,0.20);
+}
 
-    iframe{
-      width: 100%;
-      height: 74vh;
-      border: 0;
-      display:block;
-    }
+
+   iframe{
+  width: 100%;
+  height: calc(100vh - 360px);
+  min-height: 520px;
+  border: 0;
+  display: block;
+}
+
 
     .footer{
       text-align:center;
@@ -235,6 +238,12 @@
       justify-content:flex-end;
       margin-top: 12px;
     }
+    @media (min-width: 1024px) {
+  iframe {
+    height: calc(100vh - 320px);
+  }
+}
+
   </style>
 </head>
 
@@ -437,7 +446,8 @@
       function setDocById(id) {
         const chosen = DOCS.find(d=>d.id===id) || DOCS[0];
         const pdfUrl = withUtm(chosen.file);
-        const viewUrl = pdfUrl + "#view=FitH";
+        const viewUrl = pdfUrl + "#view=FitH&zoom=page-width";
+
 
         // Update buttons
         openBtn.href = pdfUrl;
